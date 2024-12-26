@@ -1,0 +1,19 @@
+﻿
+@model List<Article>
+@{
+    var groupedCategories = Model
+        .GroupBy(a => a.Category) // Kategorilere göre gruplama
+        .Select(g => new
+        {
+            CategoryName = g.Key.CategoryName, // Kategori ismini alıyoruz
+            ArticleCount = g.Count()   // O kategoriye ait makale sayısını alıyoruz
+        })
+        .ToList(); // Listeyi oluşturuyoruz
+}
+
+<ul>
+    @foreach (var category in groupedCategories)
+    {
+        <li><a href="#">@category.CategoryName <span>@category.ArticleCount</span></a></li>
+    }
+</ul>

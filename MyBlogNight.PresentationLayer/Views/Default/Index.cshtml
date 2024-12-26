@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+
+<body>
+
+
+    @await Component.InvokeAsync("_HeroSectionPartial")
+
+
+    <section class="categories spad">
+        @await Component.InvokeAsync("_CategoryTilePartial")
+
+        
+        <div class="categories__post">
+            <div class="container">
+                <div class="row">
+                    @await Component.InvokeAsync("_CategoryMainPostItemPartial")
+
+                    @await Component.InvokeAsync("_CategorySubPostItemPartial")
+
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,51 @@
+﻿@using MyBlogNight.EntityLayer.Concrete
+@model List<Contact>
+@{
+    ViewData["Title"] = "Inbox";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Gelen Mesaj Paneli</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-responsive-sm">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Gönderen</th>
+                            <th>Mail</th>
+                            <th>Konu</th>
+                            <th>Tarih</th>
+                            <th>Mesaj</th>
+                      
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ContactID</td>
+                                <td>@item.NameSurname</td>
+                                <td>@item.Mail</td>
+                                <td>@item.Subject</td>
+                                <td>@item.SendDate.ToShortDateString()</td>
+                                <td>@item.Message</td>
+                         
+
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+              
+
+            </div>
+        </div>
+    </div>
+</div>
+

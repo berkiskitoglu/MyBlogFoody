@@ -1,0 +1,47 @@
+﻿@model List<Article>
+@{
+    ViewData["Title"] = "ArticleList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">İçerik Paneli</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-responsive-sm">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Başlık</th>
+                            <th>Kategori</th>
+                            <th>Sil</th>
+                            <th>Güncelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ArticleID</td>
+                                <td>@item.Title</td>
+                                <td>@item.Category.CategoryName</td>
+                                <td><a href="/Admin/Article/DeleteArticle/@item.ArticleID" class="btn btn-outline-danger">Sil</a></td>
+                                <td><a href="/Admin/Article/UpdateArticle/@item.ArticleID" class="btn btn-outline-success">Güncelle</a></td>
+                               
+
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+                <a href="/Admin/Article/AddArticle/" class="btn btn-outline-success"> Yeni Makale Ekle </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+

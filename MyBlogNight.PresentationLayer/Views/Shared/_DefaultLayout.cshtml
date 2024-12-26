@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+@await Component.InvokeAsync("_DefaultHeadComponentPartial")
+
+
+<body>
+    @await Component.InvokeAsync("_DefaultCollapsibleNavigationMenuPartial")
+    @await Component.InvokeAsync("_DefaultMainHeaderPartial")
+    @RenderBody();
+</body>
+
+@await Component.InvokeAsync("_DefaultFooterPartial")
+@await Component.InvokeAsync("_DefaultScriptsPartial")
+
+</html>

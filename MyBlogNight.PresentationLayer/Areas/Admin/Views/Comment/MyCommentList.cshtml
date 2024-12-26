@@ -1,0 +1,47 @@
+﻿@model List<Comment>
+
+@{
+    ViewData["Title"] = "MyCommentList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">İçerik Paneli</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-responsive-sm">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Detay</th>
+                            <th>Tarih</th>
+                            <th>Sil</th>
+                            <th>Güncelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.CommentID</td>
+                                <td>@item.CommentDetail</td>
+                                <td>@item.CreatedDate.ToShortDateString()</td>
+                                <td><a href="/Admin/Comment/DeleteComment/@item.CommentID" class="btn btn-outline-danger">Sil</a></td>
+                                <td><a href="/Admin/Comment/UpdateComment/@item.CommentID" class="btn btn-outline-success">Güncelle</a></td>
+
+
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+                <a href="/Admin/Comment/AddComment/" class="btn btn-outline-success"> Yeni Yorum Ekle </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+

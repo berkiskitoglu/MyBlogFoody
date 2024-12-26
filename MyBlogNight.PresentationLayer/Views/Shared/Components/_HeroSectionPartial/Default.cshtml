@@ -1,0 +1,118 @@
+﻿@model List<Article>
+<style>
+    /* Etiketlerin daha kompakt görünmesi için düzenleme */
+    .hero__inside__item--text ul.label li {
+        background-color: #f2f2f2; /* Açık gri arka plan */
+        color: #333; /* Koyu yazı rengi */
+        padding: 3px 8px; /* Daha az iç boşluk */
+        margin: 3px 5px; /* Etiketler arasındaki boşluğu azalt */
+        border-radius: 20px; /* Yuvarlak köşeler */
+        font-size: 12px; /* Daha küçük yazı boyutu */
+        display: inline-block; /* Yan yana sıralanır */
+        white-space: nowrap; /* Metin kırılmasını engeller */
+    }
+
+        /* Hover efekti */
+        .hero__inside__item--text ul.label li:hover {
+            background-color: #4CAF50; /* Hoverda yeşil arka plan */
+            color: white; /* Hoverda beyaz yazı rengi */
+            cursor: pointer; /* Fare imlecini değiştirir */
+        }
+
+    /* Etiketlerin daha belirgin olması için font ağırlığını artırma */
+    .hero__inside__item--text ul.label li {
+        font-weight: bold;
+    }
+
+
+</style>
+<section class="hero">
+    <div class="hero__slider owl-carousel">
+        <div class="hero__item">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 p-0">
+                        <div class="hero__inside__item hero__inside__item--wide set-bg"
+                             data-setbg=" @Model[0].ImageUrl ">
+                            <div class="hero__inside__item__text">
+                                <div class="hero__inside__item--meta">
+                                    <span>@Model[0].CreatedDate.ToString("dd")</span>
+                                    <p>@DateTime.Now.ToString("MMMM")</p>
+                                </div>
+                                <div class="hero__inside__item--text">
+                                    <ul class="label">
+                                         <li>Kategori / @Model[0].Category.CategoryName</li> 
+                                        
+                                    </ul>
+                                    <h4>
+                                        <a href="/Default/MainCourses/@Model[0].CategoryID" style="color:white">@Model[0].Detail.Substring(0, 50)...</a>
+                                    </h4>
+                                    <ul class="widget">
+                                        <li> <span>Admin Tarafından</span></li>
+                                        
+                                        <li>20 Comment</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6  p-0">
+                        <div class="hero__inside__item hero__inside__item--small set-bg"
+                             data-setbg=" @Model[1].ImageUrl ">
+                            <div class="hero__inside__item__text">
+                                <div class="hero__inside__item--meta">
+                                    <span>@Model[1].CreatedDate.ToString("dd")</span>
+                                    <p>@DateTime.Now.ToString("MMMM")</p>
+                                </div>
+                                <div class="hero__inside__item--text">
+                                    <ul class="label">
+                                         <li>Kategori / @Model[1].Category.CategoryName</li> 
+                                    </ul>
+                                    <h5>
+                                        <a href="/Default/MainCourses/@Model[1].CategoryID" style="color:white">@Model[0].Detail.Substring(0, 50)...</a>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero__inside__item hero__inside__item--small set-bg"
+                             data-setbg=" @Model[2].ImageUrl ">
+                            <div class="hero__inside__item__text">
+                                <div class="hero__inside__item--meta">
+                                    <span>@Model[2].CreatedDate.ToString("dd")</span>
+                                    <p>@DateTime.Now.ToString("MMMM")</p>
+                                </div>
+                                <div class="hero__inside__item--text">
+                                    <ul class="label">
+                                        <li>Kategori / @Model[2].Category.CategoryName</li>
+                                    </ul>
+                                    <h5>
+                                        <a href="/Default/MainCourses/@Model[2].CategoryID" style="color:white">@Model[0].Detail.Substring(0, 50)...</a>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6  p-0">
+                        <div class="hero__inside__item set-bg" data-setbg=" @Model[3].ImageUrl ">
+                            <div class="hero__inside__item__text">
+                                <div class="hero__inside__item--meta">
+                                    <span>@Model[3].CreatedDate.ToString("dd")</span>
+                                    <p>@DateTime.Now.ToString("MMMM")</p>
+                                </div>
+                                <div class="hero__inside__item--text">
+                                    <ul class="label">
+                                        <li>Kategori / @Model[3].Category.CategoryName
+                                    </ul>
+                                    <h5>
+                                        <a href="/Default/MainCourses/@Model[3].CategoryID" style="color:white">@Model[0].Detail.Substring(0, 50)...</a>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

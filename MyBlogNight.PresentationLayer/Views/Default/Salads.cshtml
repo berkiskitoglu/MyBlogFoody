@@ -1,0 +1,47 @@
+﻿@model List<Article>
+@{
+    ViewData["Title"] = "Salads";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<section class="categories categories-grid spad">
+    <div class="categories__post">
+        <div class="container">
+            <div class="categories__grid__post">
+                <div class="breadcrumb__text">
+                    <h2>Kategori: <span>Salatalar</span></h2>
+                    <div class="breadcrumb__option">
+                        <a href="#">Anasayfa</a>
+                        <span>Salatalar</span>
+                    </div>
+                </div>
+                <div class="row">
+
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                            <div class="categories__post__item">
+                                <div class="categories__post__item__pic small__item set-bg" data-setbg=" @item.ImageUrl ">
+                                    <div class="post__meta">
+                                        <h4>@item.CreatedDate.ToString("MM")</h4>
+                                        <span>@item.CreatedDate.ToString("MMMM")</span>
+                                    </div>
+                                </div>
+                                <div class="categories__post__item__text">
+                                    <span class="post__label">@item.Category.CategoryName</span>
+                                    <h3><a href="#">@item.Title</a></h3>
+
+                                    <p>
+                                        @item.Detail
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

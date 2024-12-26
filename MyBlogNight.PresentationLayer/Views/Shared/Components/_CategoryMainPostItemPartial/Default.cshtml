@@ -1,0 +1,81 @@
+﻿@model List<Article>
+<div class="col-lg-8 col-md-8">
+    <div class="categories__post__item categories__post__item--large">
+        <div class="categories__post__item__pic set-bg"
+             data-setbg=" @Model[4].ImageUrl ">
+            <div class="post__meta">
+                <h4>@Model[4].CreatedDate.ToString("dd")</h4>
+                <span>@DateTime.Now.ToString("MMMM")</span>
+            </div>
+        </div>
+        <div class="categories__post__item__text">
+            <ul class="post__label--large">
+                <li>Kategori / @Model[4].Category.CategoryName</li>
+            </ul>
+            <h3>
+                <a href="#">
+                    @Model[4].Title
+                </a>
+            </h3>
+            <ul class="post__widget">
+                <li>Admin Tarafından</li>
+                <li>  @Model[4].Category.Article.Count()  </li>
+            </ul>
+            <p>
+                <a href="/Default/Breakfast/@Model[4].CategoryID" style="color:black">@Model[4].Detail.Substring(0, 100)...</a>
+            </p>
+            <a href="/Default/Breakfast/@Model[4].CategoryID" class="primary-btn">Daha Fazlası ...</a>
+
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var item in Model.Skip(5).Take(4))
+        {
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="categories__post__item">
+                    <div class="categories__post__item__pic smaller__large set-bg"
+                         data-setbg=" @item.ImageUrl ">
+                        <div class="post__meta">
+                            <h4>@item.CreatedDate.ToString("dd")</h4>
+                            <span>@DateTime.Now.ToString("MMMM")</span>
+                        </div>
+                    </div>
+                    <div class="categories__post__item__text">
+                        <span class="post__label">@item.Category.CategoryName</span>
+                        <h3>
+                            <a href="#">@item.Title</a>
+                        </h3>
+                        <ul class="post__widget">
+                            <li>Admin Tarfından</li>
+                            <li> @item.Category.Article.Count() </li>
+                        </ul>
+                        <p>
+                            <a href="@(
+    item.CategoryID == 1
+    ? Url.Action("MainCourses", "Default")
+    : item.CategoryID == 2
+        ? Url.Action("Desserts", "Default")
+        : item.CategoryID == 3
+            ? Url.Action("Breakfast", "Default")
+            : item.CategoryID == 4
+                ? Url.Action("Beverages", "Default")
+                : item.CategoryID == 5
+                    ? Url.Action("Salads", "Default")
+                    : Url.Action("Index", "Default")
+)" style="color:black">
+                                @item.Detail.Substring(0, 100)...
+                            </a>
+
+
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+        }
+
+
+
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿@model Article
+@{
+    ViewData["Title"] = "AddArticle";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+    <div class="col-lg-12">
+        <form method="post">
+        <br />
+        <label>Başlık</label>
+        <input type="text" asp-for="Title" class="form-control" />
+        <br />
+        <label>Resim</label>
+      <input type="text" asp-for="ImageUrl" class="form-control" />
+
+        <label>Kategori</label>
+        @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.v1, new { @class = "form-control" })
+        <br />
+        <label>Detay</label>
+        <input type="text" asp-for="Detail" class="form-control" />
+        <br />
+        <button class="btn btn-primary">Makaleyi Ekle</button>
+    </form>
+
+    </div>

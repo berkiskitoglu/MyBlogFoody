@@ -1,0 +1,80 @@
+﻿@model List<Article>
+<div class="col-lg-4 col-md-4">
+    <div class="sidebar__item">
+        <div class="sidebar__about__item">
+            <div class="sidebar__item__title">
+                <h6>Hakkımda</h6>
+            </div>
+            <img src="img/sidebar/sidebar-about.jpg" alt="">
+            <h6>Herkese Merhaba! Ben <span>Halit Berk İskitoğlu.</span></h6>
+            <p>
+                Bilgisayar mühendisiyim ve özellikle ASP.NET teknolojileri  üzerine çalışıyorum. Teknolojiyi etkili çözümler üretmek için kullanıyorum.
+            </p>
+        </div>
+        <div class="sidebar__follow__item">
+            <div class="sidebar__item__title">
+                <h6>Beni Takip Et</h6>
+            </div>
+            <div class="sidebar__item__follow__links">
+                @await Component.InvokeAsync("_SocialMediaPartial")
+
+            </div>
+        </div>
+        <div class="sidebar__feature__item">
+            <div class="sidebar__item__title">
+                <h6>Öne Çıkanlar</h6>
+            </div>
+            <div class="sidebar__feature__item__large set-bg"
+                 data-setbg=" @Model[7].ImageUrl ">
+                <div class="sidebar__feature__item__large--text">
+                    <span>@Model[7].Category.CategoryName</span>
+                    <h5><a href="/Default/Breakfast/">@Model[7].Detail.Substring(0, 60)...</a></h5>
+                </div>
+            </div>
+            <div class="sidebar__feature__item__list">
+                @foreach(var item in Model.OrderByDescending(x=>x.ArticleID).Take(4))
+                {
+                    <div class="sidebar__feature__item__list__single">
+                        <div class="post__meta">
+                            <h4>@item.CreatedDate.ToString("dd")</h4>
+                            <span>@item.CreatedDate.ToString("MMMM")</span>
+                        </div>
+                        <div class="post__text">
+                            <span>@item.Category.CategoryName / @item.Title</span>
+                            <h5>
+                                <a href="@(
+    item.CategoryID == 1
+    ? Url.Action("MainCourses", "Default")
+    : item.CategoryID == 2
+        ? Url.Action("Desserts", "Default")
+        : item.CategoryID == 3
+            ? Url.Action("Breakfast", "Default")
+            : item.CategoryID == 4
+                ? Url.Action("Beverages", "Default")
+                : item.CategoryID == 5
+                    ? Url.Action("Salads", "Default")
+                    : Url.Action("Index", "Default")
+)" style="color:black">
+                                    @item.Detail.Substring(0, 100)...
+                                </a>
+                            </h5>
+                        </div>
+                    </div>
+                }
+                
+              
+            </div>
+        </div>
+        <div class="sidebar__item__banner">
+            <img src="img/sidebar/banner.jpg" alt="">
+        </div>
+        <div class="sidebar__item__categories">
+            <div class="sidebar__item__title">
+                <h6>Kategoriler</h6>
+            </div>
+            @await Component.InvokeAsync("_DefaultCategoryListComponentPartial")
+
+        </div>
+        
+    </div>
+</div>

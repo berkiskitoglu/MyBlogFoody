@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    @await Component.InvokeAsync("Head")
+
+<body>
+
+
+ 
+
+    <div id="main-wrapper">
+
+        @await Component.InvokeAsync("HeaderLogo")
+
+
+        @await Component.InvokeAsync("MainHeader")
+
+      
+        @await Component.InvokeAsync("Sidebar")
+        
+
+        <div class="content-body">
+            <div class="container-fluid">
+               
+
+             
+
+                <div class="row">
+
+                    @RenderBody()
+                   
+                </div>
+
+            </div>
+        </div>
+   
+       
+
+
+    </div>
+
+
+    @await Component.InvokeAsync("Script")
+
+
+
+</body>
+
+</html>

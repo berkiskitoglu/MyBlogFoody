@@ -1,0 +1,20 @@
+﻿@model Category
+
+
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="container">
+    <form action="/Admin/Category/AddCategory" method="post">
+        <br />
+        <label>Kategori Ad</label>
+        <input type="text" asp-for="CategoryName" class="form-control" />
+        <span class="text-danger" asp-validation-for="CategoryName"></span>
+        <br />
+        <button class="btn btn-primary">Kategori Ekle</button>
+    </form>
+</div>
+
